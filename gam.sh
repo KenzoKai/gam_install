@@ -4,9 +4,23 @@ if [ "$EUID" -ne 0 ]
   then echo "Please run as sudo!"
   exit
 fi
+
+_get ()
+{
+  IFS=/ read proto z host query <<< "$1"
+  exec 3< /dev/tcp/$host/80
+  {
+    echo GET /$query HTTP/1.1
+    echo connection: close
+    echo host: $host
+    echo
+  } >&3 
+  sed '1,/^$/d' <&3 > $(basename $1)
+}
+
+
 selected_dir=''
-wget -o $HOME/.shi/shigam.sh https://raw.githubusercontent.com/KenzoKai/gam_install/main/gam.sh
-#curl -s -S -L 'https://raw.githubusercontent.com/KenzoKai/gam_install/main/gam.sh' -o $HOME/.shi/shigam.sh
+_get https://raw.githubusercontent.com/KenzoKai/gam_install/main/gam.sh
 alias shigam="$HOME/.shi/shigam.sh"
 
 dirs=($HOME/SHI/Customers/*)
