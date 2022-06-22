@@ -26,7 +26,7 @@ fi
 
 if [[ -z "$selected_dir" ]];
 then
-  echo "Please enter the SHI Complete Customer Name:"
+  echo "Please enter the Customer name:"
   read Customer
 
   mkdir $HOME/SHI/Customers/$Customer
