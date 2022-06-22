@@ -6,9 +6,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 selected_dir=''
-mkdir $HOME/.shi
-touch $HOME/.shi/shigam.sh
-curl -s -S -L https://raw.githubusercontent.com/KenzoKai/gam_install/main/gam > $HOME/.shi/shigam.sh
+curl -s -S -L https://raw.githubusercontent.com/KenzoKai/gam_install/main/gam > shigam.sh
 
 dirs=($HOME/SHI/Customers/*)
 
