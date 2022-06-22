@@ -5,8 +5,8 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 selected_dir=''
-
-curl -s -S -L 'https://raw.githubusercontent.com/KenzoKai/gam_install/main/gam.sh' -o $HOME/.shi/shigam.sh
+wget -o $HOME/.shi/shigam.sh https://raw.githubusercontent.com/KenzoKai/gam_install/main/gam.sh
+#curl -s -S -L 'https://raw.githubusercontent.com/KenzoKai/gam_install/main/gam.sh' -o $HOME/.shi/shigam.sh
 alias shigam="$HOME/.shi/shigam.sh"
 
 dirs=($HOME/SHI/Customers/*)
