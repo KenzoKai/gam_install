@@ -279,7 +279,7 @@ fi
 if [ "$update_profile" = true ]; then
   alias_line="function g$Customer() { \"$target_dir/gam/gam\" \"\$@\" ; }"
   if [ "$gamos" == "linux" ]; then
-    update_profile "$HOME/SHI/$Customer/.bash_aliases" 0 || update_profile "$HOME/SHI/$SCustomer/.bash_profile" 0 || update_profile "$HOME/SHI/$Customer/.bashrc" 0
+    update_profile "$HOME/SHI/$Customer/.bash_aliases" 0 || update_profile "$HOME/SHI/$Customer/.bash_profile" 0 || update_profile "$HOME/SHI/$Customer/.bashrc" 0
     update_profile "$HOME/SHI/$Customer/.zshrc" 0
   elif [ "$gamos" == "macos" ]; then
     update_profile "$HOME/SHI/$Customer/.bash_aliases" 0 || update_profile "$HOME/SHI/$Customer/.bash_profile" 0 || update_profile "$HOME/SHI/$Customer/.bashrc" 0 || update_profile "$HOME/SHI/$Customer/.profile" 1
