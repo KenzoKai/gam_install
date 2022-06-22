@@ -11,7 +11,7 @@ dirs=($HOME/SHI/Customers/*)
 read -p "$(
         f=0
         for dirname in "${dirs[@]}" ; do
-                echo -e "$((++f)): $(basename $dirname)"
+                echo -e "$((++f)): $(basename $dirname) COMMAND: g$(basename $dirname)"
         done
 
         echo -e 'Select Customer, or leave blank to create new > '
