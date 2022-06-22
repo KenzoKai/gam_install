@@ -11,32 +11,27 @@ dirs=($HOME/SHI/Customers/*)
 read -p "$(
         f=0
         for dirname in "${dirs[@]}" ; do
-
                 echo -e "$((++f)): $(basename $dirname)"
         done
 
         echo -e 'Select Customer, or leave blank to create new > '
 )" selection
 
-# selected_dir="${dirs[$((selection-1))]}"
-
-
-
 if [ ! -z "$selected_dir" ];
 then
   selected_dir=$(basename ${dirs[$((selection-1))]})
   echo "You selected '$selected_dir'"
-  SHI_Complete_Customer=$selected_dir
+  Customer=$selected_dir
 fi
 
 if [[ -z "$selected_dir" ]];
 then
   echo "Please enter the SHI Complete Customer Name:"
-  read SHI_Complete_Customer
+  read Customer
 
-  mkdir $HOME/SHI/Customers/$SHI_Complete_Customer
-  chmod -R 777 $HOME/SHI/Customers/$SHI_Complete_Customer
-  target_dir=$HOME/SHI/Customers/$SHI_Complete_Customer/bin
+  mkdir $HOME/SHI/Customers/$Customer
+  chmod -R 777 $HOME/SHI/Customers/$Customer
+  target_dir=$HOME/SHI/Customers/$Customer/bin
 fi
 
 usage()
@@ -58,7 +53,7 @@ OPTIONS:
 EOF
 }
 
-target_dir="$HOME/SHI/Customers/$SHI_Complete_Customer/bin"
+target_dir="$HOME/SHI/Customers/$Customer/bin"
 gamarch=$(uname -m)
 gamos=$(uname -s)
 osversion=""
@@ -282,13 +277,13 @@ fi
 
 # Update profile to add gam command
 if [ "$update_profile" = true ]; then
-  alias_line="function g$SHI_Complete_Customer() { \"$target_dir/gam/gam\" \"\$@\" ; }"
+  alias_line="function g$Customer() { \"$target_dir/gam/gam\" \"\$@\" ; }"
   if [ "$gamos" == "linux" ]; then
-    update_profile "$HOME/SHI/$SHI_Complete_Customer/.bash_aliases" 0 || update_profile "$HOME/SHI/$SHI_Complete_Customer/.bash_profile" 0 || update_profile "$HOME/SHI/$SHI_Complete_Customer/.bashrc" 0
-    update_profile "$HOME/SHI/$SHI_Complete_Customer/.zshrc" 0
+    update_profile "$HOME/SHI/$Customer/.bash_aliases" 0 || update_profile "$HOME/SHI/$SCustomer/.bash_profile" 0 || update_profile "$HOME/SHI/$Customer/.bashrc" 0
+    update_profile "$HOME/SHI/$Customer/.zshrc" 0
   elif [ "$gamos" == "macos" ]; then
-    update_profile "$HOME/SHI/$SHI_Complete_Customer/.bash_aliases" 0 || update_profile "$HOME/SHI/$SHI_Complete_Customer/.bash_profile" 0 || update_profile "$HOME/SHI/$SHI_Complete_Customer/.bashrc" 0 || update_profile "$HOME/SHI/$SHI_Complete_Customer/.profile" 1
-    update_profile "$HOME/SHI/$SHI_Complete_Customer/.zshrc" 1
+    update_profile "$HOME/SHI/$Customer/.bash_aliases" 0 || update_profile "$HOME/SHI/$Customer/.bash_profile" 0 || update_profile "$HOME/SHI/$Customer/.bashrc" 0 || update_profile "$HOME/SHI/$Customer/.profile" 1
+    update_profile "$HOME/SHI/$Customer/.zshrc" 1
   fi
 else
   echo_yellow "skipping profile update."
