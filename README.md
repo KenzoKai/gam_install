@@ -1,1 +1,1 @@
-`bash <(curl -s -S -L [https://gam-shortn.appspot.com/gam-install](https://raw.githubusercontent.com/KenzoKai/gam_install/main/gam.sh)`
+`bash <(curl -s -S -L [https://raw.githubusercontent.com/KenzoKai/gam_install/main/gam.sh](https://raw.githubusercontent.com/KenzoKai/gam_install/main/gam.sh)`
