@@ -6,8 +6,6 @@ if [ "$EUID" -ne 0 ]
 fi
 
 selected_dir=''
-curl -s -S -L https://raw.githubusercontent.com/KenzoKai/gam_install/main/gam > shigam.sh
-
 dirs=($HOME/SHI/Customers/*)
 
 read -p "$(
